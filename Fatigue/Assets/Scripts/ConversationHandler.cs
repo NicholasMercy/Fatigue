@@ -10,7 +10,8 @@ public class ConversationHandler : MonoBehaviour
     //Declerations
     public TextAsset jsonFile;
     Characters characterinJson;
-    LinkedList List;
+    LinkedList ListFather;
+    LinkedList ListMother;
 
     //Ui
     public Text Name;
@@ -23,42 +24,47 @@ public class ConversationHandler : MonoBehaviour
         //getting json file
         characterinJson = JsonUtility.FromJson<Characters>(jsonFile.text);
 
-        List = PopulateList(7, "Mother");
+        ListFather = PopulateList(7, "Father");
+        ListMother = PopulateList(7, "Mother");
+
+
         //List.MoveToIndex(4);
         //Debug.Log(List.DisplayCurrentNode().dialogue);
-        List.Print();
+        ListMother.Print();
+        ListFather.Print();
     }
 
-    public void Continue()
-    {
-        //stop routine
-        StopAllCoroutines();
-        //stop dialouge when ended
-        if (List.DisplayNextNode() != null)
-        {
-            count++;
-            if (count == 1)
-            {
-                Name.color = Color.blue;
-                Name.text = List.DisplayCurrentNode().MainTag;
-                DiaResponse.color = Color.blue;
-                StartCoroutine(MainSentence(List.DisplayCurrentNode().response));
+    //public void Continue()
+    //{
+    //    //stop routine
+    //    StopAllCoroutines();
+    //    //stop dialouge when ended
+    //    if (List.DisplayNextNode() != null)
+    //    {
+    //        count++;
+    //        if (count == 1)
+    //        {
+    //            Name.color = Color.blue;
+    //            Name.text = List.DisplayCurrentNode().MainTag;
+    //            DiaResponse.color = Color.blue;
+    //            StartCoroutine(MainSentence(List.DisplayCurrentNode().response));
 
-            }
-            else if (count == 2)
-            {
-                Name.color = Color.red;
-                Name.text = List.DisplayCurrentNode().NpcTag;
-                DiaResponse.color = Color.red;
-                StartCoroutine(MainSentence(List.DisplayCurrentNode().dialogue));
-                List.MoveToNext();
-                count = 0;
-            }
-        }
+    //        }
+    //        else if (count == 2)
+    //        {
+    //            Name.color = Color.red;
+    //            Name.text = List.DisplayCurrentNode().NpcTag;
+    //            DiaResponse.color = Color.red;
+    //            StartCoroutine(MainSentence(List.DisplayCurrentNode().dialogue));
+    //            List.MoveToNext();
+    //            count = 0;
+    //        }
+    //    }
 
 
 
-    }
+    //}
+
 
     public LinkedList PopulateList(int index, string Person)
     {
