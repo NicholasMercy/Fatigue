@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Controller : MonoBehaviour
 {
@@ -11,8 +12,15 @@ public class Controller : MonoBehaviour
     private float jumpHeight = 1.0f;
     private float gravityValue = -9.81f;
 
+    //ui
+    public GameObject Father;
+    public GameObject Mother;
+
     private void Start()
     {
+
+        Mother.SetActive(false);
+        Father.SetActive(false);
         controller = gameObject.AddComponent<CharacterController>();
     }
 
@@ -41,4 +49,31 @@ public class Controller : MonoBehaviour
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Father")
+        {
+            Father.SetActive(true);
+        }
+        else if (other.tag == "Mother")
+        {
+            Mother.SetActive(true);
+        }
+
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Father")
+        {
+
+            Father.SetActive(false);
+        }
+        else if (other.tag == "Mother")
+        {
+            Mother.SetActive(false);
+        }
+
+    }
+
+
 }

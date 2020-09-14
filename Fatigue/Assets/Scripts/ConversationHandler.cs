@@ -16,6 +16,7 @@ public class ConversationHandler : MonoBehaviour
     //Ui
     public Text Name;
     public Text DiaResponse;
+    public GameObject ConvoHud;
     int count;
     bool MainDone = false;
 
@@ -23,7 +24,7 @@ public class ConversationHandler : MonoBehaviour
     {
         //getting json file
         characterinJson = JsonUtility.FromJson<Characters>(jsonFile.text);
-
+        ConvoHud.SetActive(false);
         ListFather = PopulateList(7, "Father");
         ListMother = PopulateList(7, "Mother");
 
@@ -34,36 +35,69 @@ public class ConversationHandler : MonoBehaviour
         //ListFather.Print();
     }
 
-    //public void Continue()
-    //{
-    //    //stop routine
-    //    StopAllCoroutines();
-    //    //stop dialouge when ended
-    //    if (List.DisplayNextNode() != null)
-    //    {
-    //        count++;
-    //        if (count == 1)
-    //        {
-    //            Name.color = Color.blue;
-    //            Name.text = List.DisplayCurrentNode().MainTag;
-    //            DiaResponse.color = Color.blue;
-    //            StartCoroutine(MainSentence(List.DisplayCurrentNode().response));
+    public void ContinueFather()
+    {
+        ConvoHud.SetActive(true);
+        //stop routine
+        StopAllCoroutines();       
+        if (ListFather.DisplayNextNode() != null)
+        {
+            count++;
+            if (count == 1)
+            {
+                Name.color = Color.blue;
+                Name.text = ListFather.DisplayCurrentNode().MainTag;
+                DiaResponse.color = Color.blue;
+                StartCoroutine(MainSentence(ListFather.DisplayCurrentNode().response));
 
-    //        }
-    //        else if (count == 2)
-    //        {
-    //            Name.color = Color.red;
-    //            Name.text = List.DisplayCurrentNode().NpcTag;
-    //            DiaResponse.color = Color.red;
-    //            StartCoroutine(MainSentence(List.DisplayCurrentNode().dialogue));
-    //            List.MoveToNext();
-    //            count = 0;
-    //        }
-    //    }
+            }
+            else if (count == 2)
+            {
+                Name.color = Color.red;
+                Name.text = ListFather.DisplayCurrentNode().NpcTag;
+                DiaResponse.color = Color.red;
+                StartCoroutine(MainSentence(ListFather.DisplayCurrentNode().dialogue));
+                ListFather.MoveToNext();
+                count = 0;
+            }
+        }
+        else if (ListFather.DisplayNextNode() == null)
+        {
+            ConvoHud.SetActive(false);
+        }
+    }
+    public void ContinueMother()
+    {
+        ConvoHud.SetActive(true);
+        //stop routine
+        StopAllCoroutines();
+        if (ListMother.DisplayNextNode() != null)
+        {
+            count++;
+            if (count == 1)
+            {
+                Name.color = Color.blue;
+                Name.text = ListMother.DisplayCurrentNode().MainTag;
+                DiaResponse.color = Color.blue;
+                StartCoroutine(MainSentence(ListMother.DisplayCurrentNode().response));
 
+            }
+            else if (count == 2)
+            {
+                Name.color = Color.red;
+                Name.text = ListMother.DisplayCurrentNode().NpcTag;
+                DiaResponse.color = Color.red;
+                StartCoroutine(MainSentence(ListMother.DisplayCurrentNode().dialogue));
+                ListMother.MoveToNext();
+                count = 0;
+            }
+        }
+        else if (ListFather.DisplayNextNode() == null)
+        {
+            ConvoHud.SetActive(false);
+        }
+    }
 
-
-    //}
 
 
     public LinkedList PopulateList(int index, string Person)
@@ -102,7 +136,7 @@ public class ConversationHandler : MonoBehaviour
         foreach (char letter in sentence.ToCharArray())
         {
             DiaResponse.text += letter;
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.01f);
         }
     }
 }
