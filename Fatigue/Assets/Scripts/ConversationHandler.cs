@@ -30,8 +30,8 @@ public class ConversationHandler : MonoBehaviour
 
         //List.MoveToIndex(4);
         //Debug.Log(List.DisplayCurrentNode().dialogue);
-        ListMother.Print();
-        ListFather.Print();
+        //ListMother.Print();
+        //ListFather.Print();
     }
 
     //public void Continue()
