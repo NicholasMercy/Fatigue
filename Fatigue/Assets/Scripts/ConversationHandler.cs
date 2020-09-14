@@ -23,7 +23,7 @@ public class ConversationHandler : MonoBehaviour
         //getting json file
         characterinJson = JsonUtility.FromJson<Characters>(jsonFile.text);
 
-        List = PopulateList(7);
+        List = PopulateList(7, "Mother");
         //List.MoveToIndex(4);
         //Debug.Log(List.DisplayCurrentNode().dialogue);
         List.Print();
@@ -60,16 +60,34 @@ public class ConversationHandler : MonoBehaviour
 
     }
 
-    public LinkedList PopulateList(int index)
+    public LinkedList PopulateList(int index, string Person)
     {
         LinkedList List = new LinkedList();
         int count = 0;
-        while (count <= index - 1)
+        if(Person == "Mother")
         {
-            List.AddAtEnd(characterinJson.Mother[count]);
-            count++;
+            while (count <= index - 1)
+            {
+                List.AddAtEnd(characterinJson.Mother[count]);
+                count++;
+            }
+            return List;
         }
-        return List;
+        else if(Person == "Father")
+        {
+            while (count <= index - 1)
+            {
+                List.AddAtEnd(characterinJson.Father[count]);
+                count++;
+            }
+            return List;
+
+        }
+       else
+        {
+            return null;
+        }
+       
     }
 
     IEnumerator MainSentence(string sentence)
