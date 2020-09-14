@@ -82,29 +82,29 @@
       "id": 0,
       "NpcTag": "Mother",
       "MainTag": "Player",
-      "response": "Hi Dad",
-      "dialogue": "Hello Son",
+      "response": "Hi Mom",
+      "dialogue": "Hello my boy, how are you?",
       "tree": [ 1 ],
       "reqInv": 1,
-      "secretDia": "What do you plan on doing with that bottle, hahah you think you can drink at your age?"
+      "secretDia": "Now son, i do not want you around those items, or else you will become like your father"
     },
     {
       "id": 1,
       "NpcTag": "Mother",
       "MainTag": "Player",
-      "response": "Will you ever stop drinking?",
-      "dialogue": "That is none of your (profanity) business",
+      "response": "How are you coping with everything?",
+      "dialogue": "Yeah.. well it has been tough, sorry but i do not really want to talk about it",
       "tree": [ 2 ],
       "reqInv": 1,
-      "secretDia": ""
+      "secretDia": "Sorry mom i will put it away"
     },
 
     {
       "id": 2,
       "NpcTag": "Mother",
       "MainTag": "Player",
-      "response": "Well i think it is... and i have not been feeling well lately",
-      "dialogue": "You don't look sick to me, how about i help you with that?",
+      "response": "No worries mother, but i think talking about her will help both of us",
+      "dialogue": "Yeah, but if i mention her again your Father will beat me again",
       "tree": [ 3 ],
       "reqInv": 1,
       "SecretDia": ""
@@ -114,8 +114,8 @@
       "id": 3,
       "NpcTag": "Mother",
       "MainTag": "Player",
-      "response": "No im okay.. anyways how are you feeling after the incident?",
-      "dialogue": "well... it was something you know, i have not fully recovered from it.",
+      "response": "Damn i hate him",
+      "dialogue": "Don't say that son, he is just coping it differently",
       "tree": [ 4 ],
       "reqInv": 1,
       "SecretDia": ""
@@ -125,8 +125,8 @@
       "id": 4,
       "NpcTag": "Mother",
       "MainTag": "Player",
-      "response": "Im suprised i thought you never loved her...",
-      "dialogue": "You and me both...",
+      "response": "Does that give him an excuss to beat us half to death?",
+      "dialogue": "i know you angry but...",
       "tree": [ 5 ],
       "reqInv": 1,
       "secretDia": ""
@@ -137,8 +137,8 @@
       "id": 5,
       "NpcTag": "Mother",
       "MainTag": "Player",
-      "response": "Wow since when do you have feelings?",
-      "dialogue": "Shut the (profanity) up and get out of my sight",
+      "response": "BUT WHAT? YOU ARE GETTING BEATEN HALF TO DEATH WHILST I WATCH ON THE SIDE",
+      "dialogue": ".......",
       "tree": [ 6 ],
       "reqInv": 1,
       "secretDia": ""
@@ -147,8 +147,8 @@
       "id": 6,
       "NpcTag": "Mother",
       "MainTag": "Player",
-      "response": "...",
-      "dialogue": "Cat got your tongue? get out of here and stop wasting my time",
+      "response": "Sorry mom i should not..",
+      "dialogue": "just go",
       "tree": [ 1 ],
       "reqInv": 1,
       "secretDia": ""
