@@ -1,0 +1,157 @@
+{
+  "Father": [
+
+    {
+      "id": 0,
+      "NpcTag": "Father",
+      "MainTag": "Player",
+      "response": "Hi Dad",
+      "dialogue": "Hello Son",
+      "tree": [ 1 ],
+      "reqInv": 1,
+      "secretDia": "What do you plan on doing with that bottle, hahah you think you can drink at your age?"
+    },
+    {
+      "id": 1,
+      "NpcTag": "Father",
+      "MainTag": "Player",
+      "response": "Will you ever stop drinking?",
+      "dialogue": "That is none of your (profanity) business",
+      "tree": [ 2 ],
+      "reqInv": 1,
+      "secretDia": ""
+    },
+
+    {
+      "id": 2,
+      "NpcTag": "Father",
+      "MainTag": "Player",
+      "response": "Well i think it is... and i have not been feeling well lately",
+      "dialogue": "You don't look sick to me, how about i help you with that?",
+      "tree": [ 3 ],
+      "reqInv": 1,
+      "SecretDia": ""
+    },
+
+    {
+      "id": 3,
+      "NpcTag": "Father",
+      "MainTag": "Player",
+      "response": "No im okay.. anyways how are you feeling after the incident?",
+      "dialogue": "well... it was something you know, i have not fully recovered from it.",
+      "tree": [ 4 ],
+      "reqInv": 1,
+      "SecretDia": ""
+    },
+
+    {
+      "id": 4,
+      "NpcTag": "Father",
+      "MainTag": "Player",
+      "response": "Im suprised i thought you never loved her...",
+      "dialogue": "You and me both...",
+      "tree": [ 5 ],
+      "reqInv": 1,
+      "secretDia": ""
+    },
+
+
+    {
+      "id": 5,
+      "NpcTag": "Father",
+      "MainTag": "Player",
+      "response": "Wow since when do you have feelings?",
+      "dialogue": "Shut the (profanity) up and get out of my sight",
+      "tree": [ 6 ],
+      "reqInv": 1,
+      "secretDia": ""
+    },
+    {
+      "id": 6,
+      "NpcTag": "Father",
+      "MainTag": "Player",
+      "response": "...",
+      "dialogue": "Cat got your tongue? get out of here and stop wasting my time",
+      "tree": [ 1 ],
+      "reqInv": 1,
+      "secretDia": ""
+    }
+  ],
+  "Mother": [
+    {
+      "id": 0,
+      "NpcTag": "Mother",
+      "MainTag": "Player",
+      "response": "Hi Dad",
+      "dialogue": "Hello Son",
+      "tree": [ 1 ],
+      "reqInv": 1,
+      "secretDia": "What do you plan on doing with that bottle, hahah you think you can drink at your age?"
+    },
+    {
+      "id": 1,
+      "NpcTag": "Mother",
+      "MainTag": "Player",
+      "response": "Will you ever stop drinking?",
+      "dialogue": "That is none of your (profanity) business",
+      "tree": [ 2 ],
+      "reqInv": 1,
+      "secretDia": ""
+    },
+
+    {
+      "id": 2,
+      "NpcTag": "Mother",
+      "MainTag": "Player",
+      "response": "Well i think it is... and i have not been feeling well lately",
+      "dialogue": "You don't look sick to me, how about i help you with that?",
+      "tree": [ 3 ],
+      "reqInv": 1,
+      "SecretDia": ""
+    },
+
+    {
+      "id": 3,
+      "NpcTag": "Mother",
+      "MainTag": "Player",
+      "response": "No im okay.. anyways how are you feeling after the incident?",
+      "dialogue": "well... it was something you know, i have not fully recovered from it.",
+      "tree": [ 4 ],
+      "reqInv": 1,
+      "SecretDia": ""
+    },
+
+    {
+      "id": 4,
+      "NpcTag": "Mother",
+      "MainTag": "Player",
+      "response": "Im suprised i thought you never loved her...",
+      "dialogue": "You and me both...",
+      "tree": [ 5 ],
+      "reqInv": 1,
+      "secretDia": ""
+    },
+
+
+    {
+      "id": 5,
+      "NpcTag": "Mother",
+      "MainTag": "Player",
+      "response": "Wow since when do you have feelings?",
+      "dialogue": "Shut the (profanity) up and get out of my sight",
+      "tree": [ 6 ],
+      "reqInv": 1,
+      "secretDia": ""
+    },
+    {
+      "id": 6,
+      "NpcTag": "Mother",
+      "MainTag": "Player",
+      "response": "...",
+      "dialogue": "Cat got your tongue? get out of here and stop wasting my time",
+      "tree": [ 1 ],
+      "reqInv": 1,
+      "secretDia": ""
+    }
+  ]
+}
