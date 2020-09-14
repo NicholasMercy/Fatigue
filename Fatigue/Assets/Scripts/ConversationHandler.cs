@@ -92,7 +92,7 @@ public class ConversationHandler : MonoBehaviour
                 count = 0;
             }
         }
-        else if (ListFather.DisplayNextNode() == null)
+        else if (ListMother.DisplayNextNode() == null)
         {
             ConvoHud.SetActive(false);
         }
