@@ -13,92 +13,100 @@ public class ConversationHandler : MonoBehaviour
     LinkedList ListFather;
     LinkedList ListMother;
 
+    //button objects
+    public Button Father;
+    public Button Mother;
+
+
     //Ui
     public Text Name;
     public Text DiaResponse;
     public GameObject ConvoHud;
+    public GameObject closeBtn;
+
     int count;
-    bool MainDone = false;
+    //int populate = 8;
+
+    bool fatherOn = false;
+    bool motherOn = false;
 
     void Start()
     {
         //getting json file
         characterinJson = JsonUtility.FromJson<Characters>(jsonFile.text);
         ConvoHud.SetActive(false);
-        ListFather = PopulateList(7, "Father");
-        ListMother = PopulateList(7, "Mother");
+        ListFather = PopulateList(14, "Father");
+        ListMother = PopulateList(9, "Mother");
 
+        //button
+        Button father = Father.GetComponent<Button>();
+        father.onClick.AddListener(FatherTrue);
+
+        Button mother = Mother.GetComponent<Button>();
+        mother.onClick.AddListener(MotherTrue);
 
         //ListMother.MoveToIndex(4);
         //Debug.Log(List.DisplayCurrentNode().dialogue);
-        ListMother.PrintBack();
+        //ListMother.Print();
         //ListFather.Print();
     }
 
-    public void ContinueFather()
-    {
-        ConvoHud.SetActive(true);
-        //stop routine
-        StopAllCoroutines();       
-        if (ListFather.DisplayNextNode() != null)
-        {
-            count++;
-            if (count == 1)
-            {
-                Name.color = Color.blue;
-                Name.text = ListFather.DisplayCurrentNode().MainTag;
-                DiaResponse.color = Color.blue;
-                StartCoroutine(MainSentence(ListFather.DisplayCurrentNode().response));
-
-            }
-            else if (count == 2)
-            {
-                Name.color = Color.red;
-                Name.text = ListFather.DisplayCurrentNode().NpcTag;
-                DiaResponse.color = Color.red;
-                StartCoroutine(MainSentence(ListFather.DisplayCurrentNode().dialogue));
-                ListFather.MoveToNext();
-                count = 0;
-            }
-        }
-        else if (ListFather.DisplayNextNode() == null)
-        {
-            ConvoHud.SetActive(false);
-        }
-    }
-    public void ContinueMother()
+    public void Continue()
     {
         ConvoHud.SetActive(true);
         //stop routine
         StopAllCoroutines();
-        if (ListMother.DisplayNextNode() != null)
-        {
-            count++;
-            if (count == 1)
-            {
-                Name.color = Color.blue;
-                Name.text = ListMother.DisplayCurrentNode().MainTag;
-                DiaResponse.color = Color.blue;
-                StartCoroutine(MainSentence(ListMother.DisplayCurrentNode().response));
 
-            }
-            else if (count == 2)
-            {
-                Name.color = Color.red;
-                Name.text = ListMother.DisplayCurrentNode().NpcTag;
-                DiaResponse.color = Color.red;
-                StartCoroutine(MainSentence(ListMother.DisplayCurrentNode().dialogue));
-                ListMother.MoveToNext();
-                count = 0;
-            }
+        //list assign
+        LinkedList Temp = null;
+        if (fatherOn == true)
+        {
+            Temp = ListFather;
         }
-        else if (ListMother.DisplayNextNode() == null)
+        else if (motherOn == true)
+        {
+
+            Temp = ListMother;
+        }
+
+        //Debug.Log(Temp.DisplayNextNode());
+        if (Temp.DisplayCurrentNode().Tag == "Player")
+        {
+            Name.color = Color.blue;
+            Name.text = Temp.DisplayCurrentNode().Tag;
+            DiaResponse.color = Color.blue;
+            StartCoroutine(MainSentence(Temp.DisplayCurrentNode().dialogue));
+            Temp.MoveToNext();
+
+        }
+        else if (Temp.DisplayCurrentNode().Tag == "Father"|| Temp.DisplayCurrentNode().Tag == "Mother")
+        {
+            Name.color = Color.red;
+            Name.text = Temp.DisplayCurrentNode().Tag;
+            DiaResponse.color = Color.red;
+            StartCoroutine(MainSentence(Temp.DisplayCurrentNode().dialogue));
+            Temp.MoveToNext();
+           
+        }
+        if(Temp.DisplayCurrentNode().End == true)
         {
             ConvoHud.SetActive(false);
         }
+        Debug.Log(Temp.DisplayCurrentNode().End);
     }
+   
+   
 
-
+    public void FatherTrue()
+    {
+        fatherOn = true;
+        //Debug.Log("fathjer");
+    }
+    public void MotherTrue()
+    {
+        motherOn = true;
+        
+    }
 
     public LinkedList PopulateList(int index, string Person)
     {
@@ -146,13 +154,12 @@ public class ConversationHandler : MonoBehaviour
 public class Dialogue
 {
     public int id;
-    public string NpcTag;
-    public string MainTag;
-    public string response;
+    public string Tag;
     public string dialogue;
     public string[] tree;
     public int reqInv;
     public string secretDia;
+    public bool End;
 
 
 }

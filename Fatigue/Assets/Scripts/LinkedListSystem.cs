@@ -169,6 +169,16 @@ public class LinkedList : IEnumerable<LinkedListSystem>
         return;
     }
 
+    public void MoveToPrevious()
+    {
+        if (head.prev != null)
+        {
+            head = head.prev;
+
+        }
+        return;
+
+    }
     
     //SIMPLE CHECKS
     public Dialogue DisplayNextNode()
@@ -176,6 +186,16 @@ public class LinkedList : IEnumerable<LinkedListSystem>
         if (head.next != null)
         {
             return head.next.Dia;
+
+        }
+        return null;
+
+    }
+    public Dialogue DisplayPrevNode()
+    {
+        if (head.prev != null)
+        {
+            return head.prev.Dia;
 
         }
         return null;

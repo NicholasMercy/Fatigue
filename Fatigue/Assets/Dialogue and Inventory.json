@@ -1,157 +1,212 @@
 {
   "Father": [
-
     {
       "id": 0,
-      "NpcTag": "Father",
-      "MainTag": "Player",
-      "response": "Hi Dad",
+      "Tag": "Father",
       "dialogue": "Hello Son",
       "tree": [ 1 ],
       "reqInv": 1,
-      "secretDia": "What do you plan on doing with that bottle, hahah you think you can drink at your age?"
+      "secretDia": "What do you plan on doing with that bottle, hahah you think you can drink at your age?",
+      "End": false
     },
     {
       "id": 1,
-      "NpcTag": "Father",
-      "MainTag": "Player",
-      "response": "Will you ever stop drinking?",
-      "dialogue": "That is none of your (profanity) business",
-      "tree": [ 2 ],
+      "Tag": "Player",
+      "dialogue": "Will you ever stop drinking?",
+      "tree": [ 1 ],
       "reqInv": 1,
-      "secretDia": ""
+      "secretDia": "",
+      "End": false
     },
-
     {
       "id": 2,
-      "NpcTag": "Father",
-      "MainTag": "Player",
-      "response": "Well i think it is... and i have not been feeling well lately",
-      "dialogue": "You don't look sick to me, how about i help you with that?",
-      "tree": [ 3 ],
+      "Tag": "Father",
+      "dialogue": "That is none of your (profanity) business",
+      "tree": [ 1 ],
       "reqInv": 1,
-      "SecretDia": ""
+      "secretDia": "",
+      "End": false
     },
-
     {
       "id": 3,
-      "NpcTag": "Father",
-      "MainTag": "Player",
-      "response": "No im okay.. anyways how are you feeling after the incident?",
-      "dialogue": "well... it was something you know, i have not fully recovered from it.",
-      "tree": [ 4 ],
+      "Tag": "Player",
+      "dialogue": "Well i think it is... and i have not been feeling well lately",
+      "tree": [ 1 ],
       "reqInv": 1,
-      "SecretDia": ""
+      "secretDia": "",
+      "End": false
     },
-
     {
       "id": 4,
-      "NpcTag": "Father",
-      "MainTag": "Player",
-      "response": "Im suprised i thought you never loved her...",
-      "dialogue": "You and me both...",
-      "tree": [ 5 ],
+      "Tag": "Father",
+      "dialogue": "You don't look sick to me, how about i help you with that?",
+      "tree": [ 1 ],
       "reqInv": 1,
-      "secretDia": ""
+      "secretDia": "",
+      "End": false
     },
-
-
     {
       "id": 5,
-      "NpcTag": "Father",
-      "MainTag": "Player",
-      "response": "Wow since when do you have feelings?",
-      "dialogue": "Shut the (profanity) up and get out of my sight",
-      "tree": [ 6 ],
+      "Tag": "Player",
+      "dialogue": "No im okay.. anyways how are you feeling after the incident?",
+      "tree": [ 1 ],
       "reqInv": 1,
-      "secretDia": ""
+      "secretDia": "",
+      "End": false
     },
     {
       "id": 6,
-      "NpcTag": "Father",
-      "MainTag": "Player",
-      "response": "...",
+      "Tag": "Father",
+      "dialogue": "well... it was something you know, i have not fully recovered from it.",
+      "tree": [ 1 ],
+      "reqInv": 1,
+      "secretDia": "",
+      "End": false
+    },
+    {
+      "id": 7,
+      "Tag": "Player",
+      "dialogue": "Im suprised i thought you never loved her...",
+      "tree": [ 1 ],
+      "reqInv": 1,
+      "secretDia": "",
+      "End": false
+    },
+    {
+      "id": 8,
+      "Tag": "Father",
+      "dialogue": "You and me both...",
+      "tree": [ 1 ],
+      "reqInv": 1,
+      "secretDia": "",
+      "End": false
+    },
+    {
+      "id": 9,
+      "Tag": "Player",
+      "dialogue": "Wow since when do you have feelings?",
+      "tree": [ 1 ],
+      "reqInv": 1,
+      "secretDia": "",
+      "End": false
+    },
+    {
+      "id": 10,
+      "Tag": "Father",
+      "dialogue": "Shut the (profanity) up and get out of my sight",
+      "tree": [ 1 ],
+      "reqInv": 1,
+      "secretDia": "",
+      "End": false
+    },
+    {
+      "id": 11,
+      "Tag": "Player",
+      "dialogue": "...",
+      "tree": [ 1 ],
+      "reqInv": 1,
+      "secretDia": "",
+      "End": false
+    },
+    {
+      "id": 12,
+      "Tag": "Father",
       "dialogue": "Cat got your tongue? get out of here and stop wasting my time",
       "tree": [ 1 ],
       "reqInv": 1,
-      "secretDia": ""
+      "secretDia": "",
+      "End": false
+    },
+    {
+      "id": 13,
+      "Tag": "Player",
+      "dialogue": "",
+      "tree": [ 1 ],
+      "reqInv": 1,
+      "secretDia": "",
+      "End": true
     }
   ],
   "Mother": [
     {
       "id": 0,
-      "NpcTag": "Mother",
-      "MainTag": "Player",
-      "response": "Hi Mom",
-      "dialogue": "Hello my boy, how are you?",
+      "Tag": "Mother",
+      "dialogue": "Hi sweety",
       "tree": [ 1 ],
       "reqInv": 1,
-      "secretDia": "Now son, i do not want you around those items, or else you will become like your father"
+      "secretDia": "Honey please put that down, you should not be drinking at your age",
+      "End": false
     },
     {
       "id": 1,
-      "NpcTag": "Mother",
-      "MainTag": "Player",
-      "response": "How are you coping with everything?",
-      "dialogue": "Yeah.. well it has been tough, sorry but i do not really want to talk about it",
-      "tree": [ 2 ],
+      "Tag": "Player",
+      "dialogue": "So mom how you feeling?",
+      "tree": [ 1 ],
       "reqInv": 1,
-      "secretDia": "Sorry mom i will put it away"
+      "secretDia": "",
+      "End": false
     },
-
     {
       "id": 2,
-      "NpcTag": "Mother",
-      "MainTag": "Player",
-      "response": "No worries mother, but i think talking about her will help both of us",
-      "dialogue": "Yeah, but if i mention her again your Father will beat me again",
-      "tree": [ 3 ],
+      "Tag": "Mother",
+      "dialogue": "I am feeling terrible, i missed her so much honey...",
+      "tree": [ 1 ],
       "reqInv": 1,
-      "SecretDia": ""
+      "secretDia": "",
+      "End": false
     },
-
     {
       "id": 3,
-      "NpcTag": "Mother",
-      "MainTag": "Player",
-      "response": "Damn i hate him",
-      "dialogue": "Don't say that son, he is just coping it differently",
-      "tree": [ 4 ],
+      "Tag": "Player",
+      "dialogue": "Yeah, but we all know who made her do it",
+      "tree": [ 1 ],
       "reqInv": 1,
-      "SecretDia": ""
+      "secretDia": "",
+      "End": false
     },
-
     {
       "id": 4,
-      "NpcTag": "Mother",
-      "MainTag": "Player",
-      "response": "Does that give him an excuss to beat us half to death?",
-      "dialogue": "i know you angry but...",
-      "tree": [ 5 ],
+      "Tag": "Mother",
+      "dialogue": "Son don't speak like that about your father",
+      "tree": [ 1 ],
       "reqInv": 1,
-      "secretDia": ""
+      "secretDia": "",
+      "End": false
     },
-
-
     {
       "id": 5,
-      "NpcTag": "Mother",
-      "MainTag": "Player",
-      "response": "BUT WHAT? YOU ARE GETTING BEATEN HALF TO DEATH WHILST I WATCH ON THE SIDE",
-      "dialogue": ".......",
-      "tree": [ 6 ],
+      "Tag": "Player",
+      "dialogue": "Why do you defend him? Can you not see what he truely is?",
+      "tree": [ 1 ],
       "reqInv": 1,
       "secretDia": ""
     },
     {
       "id": 6,
-      "NpcTag": "Mother",
-      "MainTag": "Player",
-      "response": "Sorry mom i should not..",
-      "dialogue": "just go",
+      "Tag": "Mother",
+      "dialogue": "Please this discussion is tiresome",
       "tree": [ 1 ],
       "reqInv": 1,
-      "secretDia": ""
+      "secretDia": "",
+      "End": false
+    },
+    {
+      "id": 7,
+      "Tag": "Player",
+      "dialogue": "I am so done with you, i am leaving",
+      "tree": [ 1 ],
+      "reqInv": 1,
+      "secretDia": "",
+      "End": false
+    },
+    {
+      "id": 8,
+      "Tag": "Player",
+      "dialogue": "",
+      "tree": [ 1 ],
+      "reqInv": 1,
+      "secretDia": "",
+      "End": true
     }
   ]
 }
