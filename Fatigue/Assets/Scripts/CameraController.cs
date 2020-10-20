@@ -13,7 +13,6 @@ public class CameraController : MonoBehaviour
     {
         
         lookTarget = GameObject.FindGameObjectWithTag("Player").transform;
-        Debug.Log(lookTarget.tag);
         offset = transform.position - lookTarget.position;
     }
 

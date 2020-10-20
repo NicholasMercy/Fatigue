@@ -5,52 +5,115 @@ using UnityEngine;
 public class LinkedListSystem
 {
     public LinkedListSystem next;
+    public LinkedListSystem prev;
     public Dialogue Dia;
     public LinkedListSystem(Dialogue dia)
     {
         this.Dia = dia;
-
+        
     }
     public Dialogue DisplayCurrentNode()
     {
         return this.Dia;
     }
 
+    //Check
     public void Print()
     {
 
-        Debug.Log(Dia.NpcTag);
+        Debug.Log(Dia.dialogue);
         if (next != null)
         {
             next.Print();
         }
     }
+    public void PrintBack()
+    {
+        Debug.Log(Dia.dialogue);
+        if (prev != null)
+        {
+            prev.PrintBack();
+        }
+
+    }
 }
-public class LinkedList
+
+
+public class LinkedList : IEnumerable<LinkedListSystem>
 {
     LinkedListSystem head;
+    LinkedListSystem tail;
 
+    //setting next nodes
+    public IEnumerator<LinkedListSystem> GetEnumerator()
+    {
+        LinkedListSystem current = head;
+        while(current != null)
+        {
+            yield return current;
+            current = current.next;
+
+        }
+
+    }
+    
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
+
+    }
+
+    //setting previous nodes
+    public IEnumerable GetEnumeratorReverse()
+    {
+        LinkedListSystem current = tail;
+        while (current != null)
+        {
+            yield return current;
+            current = current.prev;
+
+        }
+
+    }
+
+   
     public void AddAtEnd(Dialogue dia)
     {
-        if (head == null)
-        {
-            head = new LinkedListSystem(dia);
-            return;
-        }
+        LinkedListSystem newNode = new LinkedListSystem(dia);
 
-        LinkedListSystem current = head;
-        while (current.next != null)
+        if (tail == null)
         {
-            current = current.next;
+            head = newNode;
+            
         }
-        current.next = new LinkedListSystem(dia);
+        else
+        {
+            //connecting nodes
+            newNode.prev = tail;
+            tail.next = newNode;
+            
+        }
+        //set new tail
+        tail = newNode;
+
     }
 
     public void AddAtStart(Dialogue dia)
     {
-        LinkedListSystem newhead = new LinkedListSystem(dia);
-        newhead.next = head;
-        head = newhead;
+        LinkedListSystem newNode = new LinkedListSystem(dia);
+        newNode.next = head;
+        //add check for tail node
+        if (head == null)
+        {
+            tail = newNode;
+
+        }
+        else
+        {
+            head.prev = newNode;
+
+        }
+        head = newNode;
     }
 
     public void DeleteValue(Dialogue dia)
@@ -106,6 +169,8 @@ public class LinkedList
         return;
     }
 
+    
+    //SIMPLE CHECKS
     public Dialogue DisplayNextNode()
     {
         if (head.next != null)
@@ -123,7 +188,13 @@ public class LinkedList
             head.Print();
         }
     }
-
+    public void PrintBack()
+    {
+        if (tail != null)
+        {
+            tail.PrintBack();
+        }
+    }
     public Dialogue DisplayCurrentNode()
     {
         if (head != null)

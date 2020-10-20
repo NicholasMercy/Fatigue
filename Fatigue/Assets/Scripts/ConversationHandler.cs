@@ -29,9 +29,9 @@ public class ConversationHandler : MonoBehaviour
         ListMother = PopulateList(7, "Mother");
 
 
-        //List.MoveToIndex(4);
+        //ListMother.MoveToIndex(4);
         //Debug.Log(List.DisplayCurrentNode().dialogue);
-        //ListMother.Print();
+        ListMother.PrintBack();
         //ListFather.Print();
     }
 
