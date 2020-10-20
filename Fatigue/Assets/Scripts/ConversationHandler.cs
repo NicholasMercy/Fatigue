@@ -76,8 +76,7 @@ public class ConversationHandler : MonoBehaviour
             Name.text = Temp.DisplayCurrentNode().Tag;
             DiaResponse.color = Color.blue;
             StartCoroutine(MainSentence(Temp.DisplayCurrentNode().dialogue));
-            Temp.MoveToNext();
-
+            
         }
         else if (Temp.DisplayCurrentNode().Tag == "Father"|| Temp.DisplayCurrentNode().Tag == "Mother")
         {
@@ -85,17 +84,60 @@ public class ConversationHandler : MonoBehaviour
             Name.text = Temp.DisplayCurrentNode().Tag;
             DiaResponse.color = Color.red;
             StartCoroutine(MainSentence(Temp.DisplayCurrentNode().dialogue));
-            Temp.MoveToNext();
-           
+                     
         }
         if(Temp.DisplayCurrentNode().End == true)
         {
             ConvoHud.SetActive(false);
         }
-        Debug.Log(Temp.DisplayCurrentNode().End);
+        Temp.MoveToNext();
+
     }
-   
-   
+    public void Back()
+    {
+        ConvoHud.SetActive(true);
+        //stop routine
+        StopAllCoroutines();
+
+        //list assign
+        LinkedList Temp = null;
+        if (fatherOn == true)
+        {
+            Temp = ListFather;
+        }
+        else if (motherOn == true)
+        {
+
+            Temp = ListMother;
+        }
+        Temp.MoveToPrevious();
+        //Debug.Log(Temp.DisplayNextNode());
+        if (Temp.DisplayCurrentNode().Tag == "Player")
+        {
+            
+            Name.color = Color.blue;
+            Name.text = Temp.DisplayCurrentNode().Tag;
+            DiaResponse.color = Color.blue;
+            StartCoroutine(MainSentence(Temp.DisplayCurrentNode().dialogue));
+            
+
+        }
+        else if (Temp.DisplayCurrentNode().Tag == "Father" || Temp.DisplayCurrentNode().Tag == "Mother")
+        {
+          
+            Name.color = Color.red;
+            Name.text = Temp.DisplayCurrentNode().Tag;
+            DiaResponse.color = Color.red;
+            StartCoroutine(MainSentence(Temp.DisplayCurrentNode().dialogue));
+       
+        }
+        if (Temp.DisplayCurrentNode().End == true)
+        {
+            ConvoHud.SetActive(false);
+        }
+
+    }
+
 
     public void FatherTrue()
     {
