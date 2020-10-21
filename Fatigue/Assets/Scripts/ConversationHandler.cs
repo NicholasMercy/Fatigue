@@ -53,6 +53,9 @@ public class ConversationHandler : MonoBehaviour
 
     public void Continue()
     {
+        //IDLE STATE
+        NpcMovement.idle = true;
+
         ConvoHud.SetActive(true);
         //stop routine
         StopAllCoroutines();
@@ -89,6 +92,9 @@ public class ConversationHandler : MonoBehaviour
         if(Temp.DisplayCurrentNode().End == true)
         {
             ConvoHud.SetActive(false);
+            //idle state off
+            NpcMovement.idle = false;
+
         }
         Temp.MoveToNext();
 
