@@ -47,6 +47,6 @@ public class MomMove : MonoBehaviour
             count = 0;
 
         }
-        Debug.Log(transform.position);
+        //Debug.Log(transform.position);
     }
 }
