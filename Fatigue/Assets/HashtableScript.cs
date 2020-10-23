@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class HashtableScript : MonoBehaviour
 {
 
     static int Table_Size = 10;
-
+    public List<GameObject> InteractibleObjects;
     //struct for Inventory Details
     struct Item
     {
@@ -16,7 +17,15 @@ public class HashtableScript : MonoBehaviour
     }
     Item[] Hash_table = new Item[Table_Size];
     Item Empty = new Item();
-   
+
+    //Parse 
+    public Text input;
+    public Text Output;
+
+    delegate string ParseCommand(string[] parameters);
+
+    Dictionary<string, string> Descriptions = new Dictionary<string, string>();
+    Hashtable Commands;
 
     int hash(string name)
     {
@@ -94,40 +103,196 @@ public class HashtableScript : MonoBehaviour
 
     private void Start()
     {
+
+        Commands = new Hashtable();
+
+        //parse Description
+        Descriptions.Add("rum", "A FULL BOTTLE OF RUM");
+        Descriptions.Add("vodka", "A FULL BOTTLE OF VODKA");
+        Descriptions.Add("glass", "A EMPTY GLASS");
+
+        //hashtable for commands
+        Commands.Add("look", "1");
+        Commands.Add("use", "2");
+        Commands.Add("pickup", "3");
+
+        //inventory 
         intialTable();
+        //Items
+       
 
-        //Item bottle = new Item();
-        //bottle.name = "Rum";
-        //bottle.id = 5;
+        Item Scndbottle = new Item();
+        Scndbottle.name = "Vodka";
+        Scndbottle.id = 2;
 
-        //Item Scndbottle = new Item();
-        //Scndbottle.name = "Rum";
-        //Scndbottle.id = 5;
+        Item Glass = new Item();
+        Glass.name = "Glass";
+        Glass.id = 3;
 
-        //Hash_table_insert(bottle);
-        //Hash_table_insert(Scndbottle);
 
-        //RemoveItem("Rum");
-        PrintTable();
+        //PrintTable();
 
-        
-        if(hash_table_lookup("Rum").name != null)
+        // //search
+        //// if(hash_table_lookup("Rum").name != null)
+        //// {
+        ////     Debug.Log(hash_table_lookup("Rum") + " found ");
+
+        //// }
+        ////else
+        //// {
+        ////     Debug.Log(" not found ");
+        //// }   
+
+    }
+
+
+    //Parse
+    public void CustomParse()
+    {
+
+        string[] words = GetWords(input.text); ;
+        if (Commands.ContainsKey(words[0]))
         {
-            Debug.Log(hash_table_lookup("Rum") + " found ");
+            if (Commands[words[0]].ToString() == "1")
+            {
+                Output.text = Look(words);
+                //Debug.Log("working");
+
+            }
+            else if (Commands[words[0]].ToString() == "2")
+            {
+                Output.text = Use(words);
+            }
+            else if (Commands[words[0]].ToString() == "3")
+            {
+                Output.text = PickUp(words);
+            }
 
         }
-       else
+
+        string[] GetWords(string s)
         {
-            Debug.Log(" not found ");
-        }   
-   
-        
+            s = s.Trim().ToLower();
+            return s.Split(' ');
 
-        
-
-
-        //    Debug.Log("Function working  " + hash("Nick"));
-        //    Debug.Log("Function working  " + hash("Nicholas"));
-        //
+        }
     }
+    string Look(string[] words)
+    {
+
+        string output = "";
+        string lookAtObject;
+       
+        if (words[1] == "at")
+        {
+            lookAtObject = words[2];
+          
+        }
+        else
+        {
+            lookAtObject = words[1];
+           
+        }
+        string descriptions;
+        Descriptions.TryGetValue(lookAtObject, out descriptions);
+        output += descriptions;
+        if(descriptions =="")
+        {
+            output = "that item is not infront of you";
+            return output;
+        }
+        else
+        {
+            return output;
+        }
+        
+    }
+    string Use(string[] words)
+    {
+        string output = "";
+        string useObject = words[1];
+
+        if (words[2] == "and")
+        {
+            return output = "you can not do that";
+        }
+
+        if (hash_table_lookup(useObject).name != null)
+        {
+            string targetObject;
+
+            if (words[2] == "on")
+            {
+                targetObject = words[3];
+            }
+            else
+            {
+                targetObject = words[2];
+            }
+
+            output += "You use the " + useObject + " on the " + targetObject;
+
+            //Another Dictionary of Use Methods
+            if (targetObject == "glass" && useObject == "rum")
+            {                
+                output = " You pour rum into the glass";
+            }
+            if (targetObject == "glass" && useObject == "vodka")
+            {
+               
+                output = " You pour vodka into the glass";
+            }
+
+            return output;
+
+        }
+        else
+        {
+            return output = "you do not have the item needed";
+        }
+
+
+
+    }
+    string PickUp(string[] words)
+    {
+        string output = "";
+        string pickupObject = words[1];
+        Debug.Log(words[1]);
+        string descriptions;
+        Descriptions.TryGetValue(pickupObject, out descriptions);
+
+        output += "you add " + pickupObject + " to your inventory";
+        Debug.Log(output);
+        
+        //adding to custom hash table
+        if(pickupObject == "rum")
+        {
+            Item bottle = new Item();
+            bottle.name = "rum";
+            bottle.id = 1;
+            Hash_table_insert(bottle);
+        }
+        else if(pickupObject == "vodka")
+        {
+            Item Scndbottle = new Item();
+            Scndbottle.name = "vodka";
+            Scndbottle.id = 2;
+            Hash_table_insert(Scndbottle);
+        }
+        else if (pickupObject == "glass")
+        {
+            Item Glass = new Item();
+            Glass.name = "glass";
+            Glass.id = 3;
+            Hash_table_insert(Glass);
+        }
+      
+        Descriptions.Remove(pickupObject);
+        return output;
+
+
+    }
+
+
 }

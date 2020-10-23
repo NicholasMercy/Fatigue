@@ -15,6 +15,7 @@ public class Controller : MonoBehaviour
     //ui
     public GameObject Father;
     public GameObject Mother;
+    public GameObject KitchenArea;
 
     private void Start()
     {
@@ -59,6 +60,11 @@ public class Controller : MonoBehaviour
         {
             Mother.SetActive(true);
         }
+        else if(other.tag == "Kitchen")
+        {
+            KitchenArea.SetActive(true);
+
+        }
 
     }
     private void OnTriggerExit(Collider other)
@@ -71,6 +77,11 @@ public class Controller : MonoBehaviour
         else if (other.tag == "Mother")
         {
             Mother.SetActive(false);
+        }
+        else if (other.tag == "Kitchen")
+        {
+            KitchenArea.SetActive(false);
+
         }
 
     }
