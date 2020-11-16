@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AI;
 
 public class Controller : MonoBehaviour
 {
@@ -17,52 +18,71 @@ public class Controller : MonoBehaviour
     public GameObject Mother;
     public GameObject KitchenArea;
 
+    public static bool walktoAunt;
+    public static bool walktoNeighbour;
+    public static bool walktoMom;
+    public static bool walktoDad;
+    public static bool walktoKitchen;
+
+    public NavMeshAgent agent;
+
+    public Vector3 destination;
+
     private void Start()
     {
 
         Mother.SetActive(false);
         Father.SetActive(false);
-        controller = gameObject.AddComponent<CharacterController>();
+        controller = gameObject.GetComponent<CharacterController>();
     }
 
     void Update()
     {
-        groundedPlayer = controller.isGrounded;
-        if (groundedPlayer && playerVelocity.y < 0)
+       if(walktoAunt == true)
         {
-            playerVelocity.y = 0f;
+            destination = GameObject.FindGameObjectWithTag("NpcAunt").transform.position;
+        }
+       else if (walktoMom == true)
+        {
+            destination = GameObject.FindGameObjectWithTag("NpcNeighbour").transform.position;
+        }
+        else if (walktoDad == true)
+        {
+            destination = GameObject.FindGameObjectWithTag("Father").transform.position;
+        }
+        else if (walktoKitchen == true)
+        {
+            destination = GameObject.FindGameObjectWithTag("Mom").transform.position;
+
         }
 
-        Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        controller.Move(move * Time.deltaTime * playerSpeed);
-
-        if (move != Vector3.zero)
-        {
-            gameObject.transform.forward = move;
-        }
-
-        // Changes the height position of the player..
-        if (Input.GetButtonDown("Jump") && groundedPlayer)
-        {
-            playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
-        }
-
-        playerVelocity.y += gravityValue * Time.deltaTime;
-        controller.Move(playerVelocity * Time.deltaTime);
+        agent.SetDestination(destination);
     }
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Father")
         {
-            Father.SetActive(true);
+           
+            Controller.walktoDad = false;
         }
         else if (other.tag == "Mother")
         {
-            Mother.SetActive(true);
+           
+            Controller.walktoMom = false;
         }
         else if(other.tag == "Kitchen")
         {
-            KitchenArea.SetActive(true);
+           
+          
+        }
+        else if (other.tag == "NpcNeighbour")
+        {
+            Controller.walktoNeighbour = false;
+        }
+        else if (other.tag == "NpcAunt")
+        {
+            NpCController.interaction = true;
+            Controller.walktoAunt = false;
 
         }
 
@@ -80,8 +100,17 @@ public class Controller : MonoBehaviour
         }
         else if (other.tag == "Kitchen")
         {
-            KitchenArea.SetActive(false);
+            
 
+        }
+        else if (other.tag == "NpcNeighbour")
+        {
+
+        }
+        else if (other.tag == "NpcAunt")
+        {
+
+            NpCController.interaction = false;
         }
 
     }

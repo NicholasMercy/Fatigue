@@ -7,6 +7,9 @@ TagManager:
   - Mother
   - Father
   - Kitchen
+  - Destination 1
+  - NpcNeighbour
+  - NpcAunt
   layers:
   - Default
   - TransparentFX

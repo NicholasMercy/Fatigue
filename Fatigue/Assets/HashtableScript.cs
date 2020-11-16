@@ -8,6 +8,13 @@ public class HashtableScript : MonoBehaviour
 
     static int Table_Size = 10;
     public List<GameObject> InteractibleObjects;
+
+    public static Vector3 destination;
+
+    public GameObject Father;
+    public GameObject Mother;
+    public GameObject KitchenArea;
+
     //struct for Inventory Details
     struct Item
     {
@@ -115,6 +122,8 @@ public class HashtableScript : MonoBehaviour
         Commands.Add("look", "1");
         Commands.Add("use", "2");
         Commands.Add("pickup", "3");
+        Commands.Add("walk", "4");
+        Commands.Add("talk", "5");
 
         //inventory 
         intialTable();
@@ -128,6 +137,8 @@ public class HashtableScript : MonoBehaviour
         Item Glass = new Item();
         Glass.name = "Glass";
         Glass.id = 3;
+
+
 
 
         //PrintTable();
@@ -166,6 +177,14 @@ public class HashtableScript : MonoBehaviour
             else if (Commands[words[0]].ToString() == "3")
             {
                 Output.text = PickUp(words);
+            }
+            else if (Commands[words[0]].ToString() == "4")
+            {
+                Output.text = (WalkTo(words));
+            }
+            else if (Commands[words[0]].ToString() == "5")
+            {
+                Output.text = (TalkTo(words));
             }
 
         }
@@ -294,5 +313,96 @@ public class HashtableScript : MonoBehaviour
 
     }
 
+    string WalkTo(string[] words)
+    {
 
+        string output = "hi there";
+      
+        if (words[1] == "to")
+        {
+            if(words[2] == "aunt")
+            {
+                Controller.walktoAunt = true;
+                output = "you move to your aunt";
+                return output;
+                
+            }
+            else if (words[2] == "father")
+            {
+                Controller.walktoDad = true;
+                output = "you move to your father";
+                return output;
+            }
+            else if (words[2] == "mother")
+            {
+                Controller.walktoMom = true;
+                output = "you move to your mother";
+                return output;
+            }
+            else if (words[2] == "neighbour")
+            {
+                Controller.walktoNeighbour = true;
+                output = "you move to your neighbour";
+                return output;
+            }
+        }
+       
+
+
+
+
+
+        else
+        {
+            output = "repeat that";
+            return output;
+        }
+        return output;
+
+
+    }
+
+    string TalkTo(string[] words)
+    {
+
+        string output = "hi there";
+
+        if (words[1] == "to")
+        {
+            if (words[2] == "aunt")
+            {             
+
+                output = "you talking to your aunt";
+                return output;
+
+            }
+            else if (words[2] == "father")
+            {
+                Father.SetActive(true);
+                output = "you talking to your father";
+                return output;
+            }
+            else if (words[2] == "mother")
+            {
+                Mother.SetActive(true);
+                output = "you talking to your mother";
+                return output;
+            }
+            else if (words[2] == "neighbour")
+            {
+               
+                output = "you talking to your neighbour";
+                return output;
+            }
+        }
+
+        else
+        {
+            output = "repeat that";
+            return output;
+        }
+        return output;
+
+
+    }
 }
